@@ -1,0 +1,28 @@
+# SBOM manifest for the nanopb submodule.
+# Consumed by esp-idf-sbom (https://github.com/espressif/esp-idf-sbom).
+#
+# Why this file exists: this repository is a SipaBoards fork of nanopb/nanopb.
+# Without a manifest the tool derives package identity from the submodule URL
+# (github.com/SipaBoards/nanopb), which matches no CPE, so the component is
+# never checked against the NVD and always reports clean - regardless of what
+# upstream has disclosed.
+#
+# version  precise fork identity, for provenance.
+# cpe      nearest UPSTREAM release, for NVD version-range matching. Not the
+#          "{}" placeholder: substituting the fork version would give the NVD a
+#          version string it cannot compare against a range.
+#
+# pb.h reports NANOPB_VERSION "nanopb-1.0.0-dev", i.e. master heading for 1.0.0.
+# The newest CHANGELOG.txt entry is 0.4.9.1 (2024-12-01), so this fork already
+# carries the GHSA-xwqq-qxmw-hj5r fix from that release. 0.4.9.1 is therefore
+# the conservative CPE version.
+name: 'nanopb'
+version: '1.0.0-dev-sipa'
+cpe: cpe:2.3:a:nanopb:nanopb:0.4.9.1:*:*:*:*:*:*:*
+supplier: 'Organization: SipaBoards'
+originator: 'Organization: nanopb'
+repository: https://github.com/nanopb/nanopb
+license: Zlib
+description: Protocol Buffers implementation for embedded systems. SipaBoards fork, master post-0.4.9.1.
+cve-keywords:
+  - nanopb
